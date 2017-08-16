@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" CONTENT="text/html; charset=big5">
 <title>Taiwan ROC ID Generator 台灣身份證字號產生器</title>
 <script language="JavaScript" type="text/javascript">
-<!-- 
+
 function calsex1(selectForm)
 /* 計算 sex 的加權值 */
 {
@@ -53,6 +53,7 @@ function midrand1(mid11)
 	var gen1;
 	gen1 = (Math.random());
 	mid11.a.value = (gen1.toString()).substring(2,9);
+	// console.log('mid11.a.value:', mid11.a.value) 為最後結果的中間7位數
 	return gen1;
 }
 
@@ -105,10 +106,14 @@ function output2(city11,sex11,mid11,output11,output12)
 	var ret2=0;
 	var out2="";
 	var i;
-	clearout001(output12);
-	midrand1(mid11);
-	ret2 = output1(city11,sex11,mid11);
-	out2 = ret2.toString();
+	clearout001(output12);   //把正確性的value清空
+	midrand1(mid11);  		//mid1 為最後結果的中間7位數 
+	console.log('city11:',city11);
+	console.log('sex11:',sex11);
+	ret2 = output1(city11,sex11,mid11);   //ret2為最後一碼(檢查碼)
+	out2 = ret2.toString();		 	//out2 = ret2	 為最後一碼(檢查碼)
+				
+	
 	for (i=0 ; i < city11.a.length ; i++)
 	{
 		if (city11.a[i].selected == true)
@@ -124,8 +129,10 @@ function output2(city11,sex11,mid11,output11,output12)
 			out1 = out1 + sex11.a[i].value;
 		}
 	}
+	//out1為A1或是G2
 	out1 = out1 + mid11.a.value;
 	out1 = out1 + out2;
+	//out1 為最後的身份證字號了
 	output11.a.value = out1;
     console.log(out1);
 	return out1;

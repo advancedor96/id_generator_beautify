@@ -1,77 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Taiwan ROC ID Generator 台灣身份證字號產生器</title>
-    <link rel="stylesheet" href="index.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Taiwan ROC ID Generator 台灣身份證字號產生器</title>
+	<link rel="stylesheet" href="index.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+	<script type="text/javascript" src="http://d3js.org/topojson.v1.min.js"></script>
+	
+<script>
+	function calmid(mid){
+		var ret=0;
+		var i;
+		for (i=0 ; i < mid.length ; i++)
+		{
+			ret = ret + (7-i) * eval(mid.substring(i,i+1));
+		}
+		return ret;		
+	}
 
+	function calcity1(city_code){
+		return eval(city_code.substring(0,1)) + eval(city_code.substring(1,2)) * 9;
+	}
+	function cal_sex(sex_code){
+		return eval(sex_code)*8;
+	}
+	function go(){
+
+		let city1 = $('input[name="city"]:checked').val();
+		let sex = $('input[name="sex"]:checked').val();
+
+		//產生7位亂數
+		let mid = Math.random().toString().substring(2,9);
+
+		//計算檢查碼
+		let ret=0;
+		
+		ret = calcity1(city1) + cal_sex(sex) + calmid(mid);
+		ret = ret % 10;
+		ret = 10 - ret;
+		ret = ret % 10;
+		//ret 為檢查碼
+
+		let output = city1.substring(2,3) + sex + mid + ret;
+
+		$('#output').val(output);
+
+		return output;
+		
+
+		
+	}
+</script>
 </head>
+
 <body>
-    
-    <div class="container">
-        <h1 class='title'>身分證字號產生器</h1>
-        <div class="city_section">
-            
-            <div class="select_city">
-                縣市
-            </div>
-            <div class="cities">
-                <div class="city_groups">
-                    <input type="radio" name="city" value="10A" checked>臺北市(A)
-                    <input type="radio" name="city" value="11B">臺中市(B)
-                    <input type="radio" name="city" value="12C">基隆市(C)
-                    <input type="radio" name="city" value="13D">臺南市(D)
-                    <input type="radio" name="city" value="14E">高雄市(E)
-                </div>
-                <div class="city_groups">
-                    <input type="radio" name="city" value="15F">臺北縣(F)
-                    <input type="radio" name="city" value="16G">宜蘭縣(G)
-                    <input type="radio" name="city" value="17H">桃園縣(H)
-                    <input type="radio" name="city" value="18J">新竹縣(J)
-                    <input type="radio" name="city" value="19K">苗栗縣(K)
-                </div>
-                <div class="city_groups">
-                    <input type="radio" name="city" value="20L">臺中縣(L)
-                    <input type="radio" name="city" value="21M">南投縣(M)
-                    <input type="radio" name="city" value="22N">彰化縣(N)
-                    <input type="radio" name="city" value="23P">雲林縣(P)
-                    <input type="radio" name="city" value="24Q">嘉義縣(Q)
-                </div>
-                <div class="city_groups">
-                    <input type="radio" name="city" value="25R">臺南縣(R)
-                    <input type="radio" name="city" value="26S">高雄縣(S)
-                    <input type="radio" name="city" value="27T">屏東縣(T)
-                    <input type="radio" name="city" value="28U">花蓮縣(U)
-                    <input type="radio" name="city" value="29V">臺東縣(V)
-                </div>
-                <div class="city_groups">
-                    <input type="radio" name="city" value="30X">澎湖縣(X)
-                    <input type="radio" name="city" value="31Y">陽明山(Y)
-                    <input type="radio" name="city" value="32W">金門縣(W)
-                    <input type="radio" name="city" value="33Z">連江縣(Z)
-                    <input type="radio" name="city" value="35O">新竹市(O)
-                </div>
-                <div class="city_groups">
-                    <input type="radio" name="city" value="34I">嘉義市(I)
-                </div>
-            </div>
-        </div>
-        <div class="sex_section">
-            <div class="select_sex">
-    性別
-            </div>
-            <div class="sex">
-                <input type="radio" name="a" value="1" checked>男
-                <input type="radio" name="a" value="2">女
 
-            </div>
-        </div>
-        <div class="generate">
-            <input type="text" class='id'>
-        </div>
 
- 
+	<div class="container">
+		<h1 class='title'>身分證字號產生器</h1>
+		<div class="city_section">
+
+			<div class="select_city">
+				縣市
+			</div>
+			<div class="cities">
+				<div class="city_groups">
+					<input type="radio" name="city" value="10A" checked>臺北市(A)
+					<input type="radio" name="city" value="11B">臺中市(B)
+					<input type="radio" name="city" value="12C">基隆市(C)
+					<input type="radio" name="city" value="13D">臺南市(D)
+					<input type="radio" name="city" value="14E">高雄市(E)
+					<input type="radio" name="city" value="15F">臺北縣(F)
+				</div>
+				<div class="city_groups">
+					<input type="radio" name="city" value="16G">宜蘭縣(G)
+					<input type="radio" name="city" value="17H">桃園縣(H)
+					<input type="radio" name="city" value="34I">嘉義市(I)
+					<input type="radio" name="city" value="18J">新竹縣(J)
+					<input type="radio" name="city" value="19K">苗栗縣(K)
+					<input type="radio" name="city" value="20L">臺中縣(L)
+				</div>
+				<div class="city_groups">
+					<input type="radio" name="city" value="21M">南投縣(M)
+					<input type="radio" name="city" value="22N">彰化縣(N)
+					<input type="radio" name="city" value="35O">新竹市(O)
+					<input type="radio" name="city" value="23P">雲林縣(P)
+					<input type="radio" name="city" value="24Q">嘉義縣(Q)
+					<input type="radio" name="city" value="25R">臺南縣(R)
+				</div>
+				<div class="city_groups">
+					<input type="radio" name="city" value="26S">高雄縣(S)
+					<input type="radio" name="city" value="27T">屏東縣(T)
+					<input type="radio" name="city" value="28U">花蓮縣(U)
+					<input type="radio" name="city" value="29V">臺東縣(V)
+					<input type="radio" name="city" value="32W">金門縣(W)
+					<input type="radio" name="city" value="30X">澎湖縣(X)
+				</div>
+				<div class="city_groups">
+					<input type="radio" name="city" value="31Y">陽明山(Y)
+					<input type="radio" name="city" value="33Z">連江縣(Z)
+				</div>
+			</div>
+
+			
+		</div>
+		<div class="sex_section">
+			<div class="select_sex">
+				性別
+			</div>
+			<div class="sex">
+				<input type="radio" name="sex" value="1" checked>男
+				<input type="radio" name="sex" value="2">女
+
+			</div>
+		</div>
+		<div class="generate">
+			<button onClick="go();">產生</button>
+			<input type="text" class='id' id='output'>
+		</div>
+
+
 </body>
+
 </html>
