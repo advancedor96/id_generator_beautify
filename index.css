@@ -4,7 +4,9 @@ html, body{
     background-color:#dddddd;
 }
 .title{
-    margin: 5px auto 0;
+    margin: 5px auto 0;    
+    width: 100%;
+    text-align: center;
 }
 *{
     /*border: solid 1px;*/
@@ -18,11 +20,13 @@ html, body{
     flex-wrap: wrap;
     align-content: flex-start;
 }
+.inner_container{
+    margin: 0 auto;
+}
 .city_section{
     margin-top: 30px;
     /*justify-content: center;*/
     width: 100%;
-    height: 140px;
     display: flex;
 }
 .select_city{
@@ -30,6 +34,14 @@ html, body{
     margin-left: 30px;
     border-right: solid 5px #f6f698;
     padding-right: 10px;
+    display: flex;
+    align-items: center;
+}
+.area{
+    font-size: 24px;
+    text-align: center;
+    font-weight: bolder;
+    margin-bottom: 16px;
 }
 .city_groups{
     width: 100px;
@@ -39,7 +51,13 @@ html, body{
     margin-left: 20px;
     display: flex;
 }
-
+.item{
+    margin:5px 0;
+    border-radius: 10px;
+}
+.item:hover{
+    background-color: #f6f698;
+}
 .sex_section{
     margin-top: 30px;
     /*justify-content: center;*/
@@ -57,18 +75,28 @@ html, body{
     padding-right: 10px;
 }
 .sex{
+    display: flex;
     margin-top:30px;
     margin-left: 20px;
+}
+.sex > .item:hover{
+    background-color: #eed6b7;
 }
 .generate{
     margin-top: 30px;
     margin-left: 60px;
+    display: flex;
 }
 
+.button{
+    height: 43px;
+    margin-right: 20px;
+}
 .id{
-    font-size: 16px;
-    height: 30px;
-    width: 211px;
+    font-size: 30px;
+    height: 43px;
+    width: 190px;
+    font-family: 'Helvetica';
     border-radius: 12px;
     border: solid green 2px;
     padding: 0 10px;
