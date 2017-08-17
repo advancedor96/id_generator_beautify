@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js'></script>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+   <link rel="stylesheet" href="index3.css">
+   <script src='index3.js'></script>
+</head>
+<body>
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+<div class="container">
+    <h1 class='title'>台灣身分證字號產生器</h1>
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title"></span>
+                    <a class="btn-floating halfway-fab waves-effect waves-light teal" onClick="go()"><i class="material-icons">refresh</i></a>
+                </div>
+                <div class="card-action">
+                    <form class="row">
+                        <div class="input-field col s12 m6">
+                            <select id="city">
+                                <option value="" selected>隨機</option>
+                                    <optgroup label="北部">
+                                        <option value="10A">臺北市(A)</option>
+                                        <option value="15F">新北市(F)</option>
+                                        <option value="12C">基隆市(C)</option>
+                                        <option value="17H">桃園縣(H)</option>
+                                        <option value="35O">新竹市(O)</option>
+                                        <option value="18J">新竹縣(J)</option>
+                                        <option value="16G">宜蘭縣(G)</option>
+                                        <option value="31Y">陽明山(Y)</option>
+                                    </optgroup>
+                                    <optgroup label="中部">
+                                        <option value="19K">苗栗縣(K)</option>
+                                        <option value="11B">臺中市(B)</option>
+                                        <option value="22N">彰化縣(N)</option>
+                                        <option value="21M">南投縣(M)</option>
+                                        <option value="23P">雲林縣(P)</option>
+                                    </optgroup>
+                                </select>
+                            <label>出生地</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <select id="sex">
+                                <option value="" selected>隨機</option>
+                                <option value="1">男</option>
+                                <option value="2">女</option>
+                            </select>
+                            <label>性別</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

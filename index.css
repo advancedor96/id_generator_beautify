@@ -1,7 +1,7 @@
 html, body{
     height: 100%;
     margin: 0;
-    background-color:#dddddd;
+    background-color:#f7fcff;
 }
 .title{
     margin: 5px auto 0;    
@@ -28,6 +28,9 @@ html, body{
     /*justify-content: center;*/
     width: 100%;
     display: flex;
+    border-radius: 18px;
+    box-shadow: 2px 2px 5px 1px grey;
+    padding: 18px 5px 18px 5px;
 }
 .select_city{
     width: 20px;
@@ -44,7 +47,7 @@ html, body{
     margin-bottom: 16px;
 }
 .city_groups{
-    width: 100px;
+    width: 105px;
     margin-right: 20px;
 }
 .cities{
@@ -52,11 +55,14 @@ html, body{
     display: flex;
 }
 .item{
-    margin:5px 0;
+    margin:24px 0;
     border-radius: 10px;
 }
 .item:hover{
     background-color: #f6f698;
+}
+label{
+    font-size:18px;
 }
 .sex_section{
     margin-top: 30px;
@@ -65,6 +71,9 @@ html, body{
     /*height: 100px;*/
     display: flex;
     margin-top: 30px;
+    border-radius: 18px;
+    box-shadow: 2px 2px 5px 1px grey;
+    padding: 18px 5px 18px 5px;
 
 }
 .select_sex{
